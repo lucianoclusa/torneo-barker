@@ -33,12 +33,18 @@ environments {
 
 	production {
 		dataSource {
-		  pooled = true
-		  dbCreate = "update"
-		  driverClassName = "com.mysql.jdbc.Driver"
+//		  pooled = true
+//		  dbCreate = "update"
+//		  driverClassName = "com.mysql.jdbc.Driver"
 		  //url='jdbc:mysql://aa1m3pxatdvhml6.ckepo45jtggq.sa-east-1.rds.amazonaws.com:3306/ebdb?user=produccion&password=12123lucho'
 		  url = System.getProperty("JDBC_CONNECTION_STRING")
-		  dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+//		  dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+		  pooled = true
+		  driverClassName = "org.postgresql.Driver"
+		  dialect = "org.hibernate.dialect.PostgreSQLDialect"
+		  username = "zgshqvfpgeaagq"
+		  password = "29ligzXLCy2svKJI2XzCBMDwtQ"
+		  
 		  properties {
 			validationQuery = "SELECT 1"
 			testOnBorrow = true
