@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="2" failures="1" hostname="BA27802ARL" name="ar.com.torneobarker.SuspensionControllerSpec" tests="7" time="1.004" timestamp="2016-03-07T19:14:47">
+  <properties />
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test the index action returns the correct model" time="0.517" />
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test the create action returns the correct model" time="0.058" />
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test the save action correctly persists an instance" time="0.117">
+    <error message="Cannot redirect for object [ar.com.torneobarker.Suspension : (unsaved)] it is not a domain or has no identifier. Use an explicit redirect instead " type="org.codehaus.groovy.grails.web.servlet.mvc.exceptions.CannotRedirectException">org.codehaus.groovy.grails.web.servlet.mvc.exceptions.CannotRedirectException: Cannot redirect for object [ar.com.torneobarker.Suspension : (unsaved)] it is not a domain or has no identifier. Use an explicit redirect instead 
+	at ar.com.torneobarker.SuspensionController.tt__save_closure15_closure24(SuspensionController.groovy:97)
+	at ar.com.torneobarker.SuspensionController.$tt__save(SuspensionController.groovy:94)
+	at ar.com.torneobarker.SuspensionControllerSpec.Test the save action correctly persists an instance(SuspensionControllerSpec.groovy:54)
+</error>
+  </testcase>
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test that the show action returns the correct model" time="0.041" />
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test that the edit action returns the correct model" time="0.045" />
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test the update action performs an update on a valid domain instance" time="0.129">
+    <error message="Cannot redirect for object [ar.com.torneobarker.Suspension : (unsaved)] it is not a domain or has no identifier. Use an explicit redirect instead " type="org.codehaus.groovy.grails.web.servlet.mvc.exceptions.CannotRedirectException">org.codehaus.groovy.grails.web.servlet.mvc.exceptions.CannotRedirectException: Cannot redirect for object [ar.com.torneobarker.Suspension : (unsaved)] it is not a domain or has no identifier. Use an explicit redirect instead 
+	at ar.com.torneobarker.SuspensionController.tt__update_closure16_closure26(SuspensionController.groovy:131)
+	at ar.com.torneobarker.SuspensionController.$tt__update(SuspensionController.groovy:128)
+	at ar.com.torneobarker.SuspensionControllerSpec.Test the update action performs an update on a valid domain instance(SuspensionControllerSpec.groovy:109)
+</error>
+  </testcase>
+  <testcase classname="ar.com.torneobarker.SuspensionControllerSpec" name="Test that the delete action deletes an instance if it exists" time="0.046">
+    <failure message="Condition not satisfied:&#xa;&#xa;Suspension.count() == 1&#xa;           |       |&#xa;           0       false&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Condition not satisfied:
+
+Suspension.count() == 1
+           |       |
+           0       false
+
+	at ar.com.torneobarker.SuspensionControllerSpec.Test that the delete action deletes an instance if it exists(SuspensionControllerSpec.groovy:142)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+]]></system-out>
+  <system-err><![CDATA[--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+]]></system-err>
+</testsuite>

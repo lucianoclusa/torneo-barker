@@ -1,0 +1,66 @@
+Testsuite: ar.com.torneobarker.TorneoControllerSpec
+Tests run: 7, Failures: 1, Errors: 4, Time elapsed: 0,913 sec
+------------- Standard Output ---------------
+--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+------------- ---------------- ---------------
+
+Testcase: Test the index action returns the correct model took 0,539 sec
+Testcase: Test the create action returns the correct model took 0,044 sec
+Testcase: Test the save action correctly persists an instance took 0,065 sec
+	Caused an ERROR
+Cannot invoke method size() on null object
+java.lang.NullPointerException: Cannot invoke method size() on null object
+	at ar.com.torneobarker.TorneoController.$tt__save(TorneoController.groovy:145)
+	at ar.com.torneobarker.TorneoControllerSpec.Test the save action correctly persists an instance(TorneoControllerSpec.groovy:54)
+
+Testcase: Test that the show action returns the correct model took 0,039 sec
+	Caused an ERROR
+Cannot get property 'fechas' on null object
+java.lang.NullPointerException: Cannot get property 'fechas' on null object
+	at ar.com.torneobarker.TorneoController.$tt__show(TorneoController.groovy:40)
+	at ar.com.torneobarker.TorneoControllerSpec.Test that the show action returns the correct model(TorneoControllerSpec.groovy:64)
+
+Testcase: Test that the edit action returns the correct model took 0,034 sec
+	Caused an ERROR
+Cannot invoke method getFechas() on null object
+java.lang.NullPointerException: Cannot invoke method getFechas() on null object
+	at ar.com.torneobarker.TorneoController.$tt__edit(TorneoController.groovy:267)
+	at ar.com.torneobarker.TorneoControllerSpec.Test that the edit action returns the correct model(TorneoControllerSpec.groovy:80)
+
+Testcase: Test the update action performs an update on a valid domain instance took 0,088 sec
+	Caused an ERROR
+Cannot get property 'id' on null object
+java.lang.NullPointerException: Cannot get property 'id' on null object
+	at ar.com.torneobarker.TorneoControllerSpec.Test the update action performs an update on a valid domain instance(TorneoControllerSpec.groovy:122)
+
+Testcase: Test that the delete action deletes an instance if it exists took 0,054 sec
+	FAILED
+Condition not satisfied:
+
+Torneo.count() == 1
+       |       |
+       0       false
+
+junit.framework.AssertionFailedError: Condition not satisfied:
+
+Torneo.count() == 1
+       |       |
+       0       false
+
+	at ar.com.torneobarker.TorneoControllerSpec.Test that the delete action deletes an instance if it exists(TorneoControllerSpec.groovy:142)
+

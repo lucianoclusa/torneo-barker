@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="2" hostname="BA27802ARL" name="ar.com.torneobarker.users.UserControllerSpec" tests="7" time="0.745" timestamp="2016-03-07T19:14:49">
+  <properties />
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test the index action returns the correct model" time="0.343" />
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test the create action returns the correct model" time="0.078" />
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test the save action correctly persists an instance" time="0.091">
+    <failure message="Condition not satisfied:&#xa;&#xa;response.redirectedUrl == &apos;/user/show/1&apos;&#xa;|        |             |&#xa;|        /user/index   false&#xa;|                      6 differences (50% similarity)&#xa;|                      /user/(index-)&#xa;|                      /user/(show/1)&#xa;org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@2afb17bf&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Condition not satisfied:
+
+response.redirectedUrl == &apos;/user/show/1&apos;
+|        |             |
+|        /user/index   false
+|                      6 differences (50% similarity)
+|                      /user/(index-)
+|                      /user/(show/1)
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@2afb17bf
+
+	at ar.com.torneobarker.users.UserControllerSpec.Test the save action correctly persists an instance(UserControllerSpec.groovy:57)
+</failure>
+  </testcase>
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test that the show action returns the correct model" time="0.039" />
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test that the edit action returns the correct model" time="0.032" />
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test the update action performs an update on a valid domain instance" time="0.076">
+    <error message="Cannot get property &apos;id&apos; on null object" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot get property &apos;id&apos; on null object
+	at ar.com.torneobarker.users.UserControllerSpec.Test the update action performs an update on a valid domain instance(UserControllerSpec.groovy:122)
+</error>
+  </testcase>
+  <testcase classname="ar.com.torneobarker.users.UserControllerSpec" name="Test that the delete action deletes an instance if it exists" time="0.044">
+    <failure message="Condition not satisfied:&#xa;&#xa;User.count() == 1&#xa;     |       |&#xa;     0       false&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Condition not satisfied:
+
+User.count() == 1
+     |       |
+     0       false
+
+	at ar.com.torneobarker.users.UserControllerSpec.Test that the delete action deletes an instance if it exists(UserControllerSpec.groovy:142)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+]]></system-out>
+  <system-err><![CDATA[--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+]]></system-err>
+</testsuite>

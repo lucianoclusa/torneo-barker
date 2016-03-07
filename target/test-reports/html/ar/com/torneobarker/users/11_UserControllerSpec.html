@@ -1,0 +1,128 @@
+<html xmlns:lxslt="http://xml.apache.org/xslt" xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Unit Test Results: ar.com.torneobarker.users.UserControllerSpec</title>
+<link rel="stylesheet" type="text/css" title="Style" href="../../../../stylesheet.css">
+<script type="text/javascript" language="JavaScript">
+        var TestCases = new Array();
+        var cur;
+        
+    cur = TestCases['ar.com.torneobarker.users.UserControllerSpec'] = new Array();
+    </script><script type="text/javascript" language="JavaScript">
+        function displayProperties (name) {
+          var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
+          var doc = win.document;
+          doc.open();
+          doc.write("<html><head><title>Properties of " + name + "</title>");
+          doc.write("<style type=\"text/css\">");
+          doc.write("body {font:normal 68% verdana,arial,helvetica; color:#000000; }");
+          doc.write("table tr td, table tr th { font-size: 68%; }");
+          doc.write("table.properties { border-collapse:collapse; border-left:solid 1 #cccccc; border-top:solid 1 #cccccc; padding:5px; }");
+          doc.write("table.properties th { text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#eeeeee; }");
+          doc.write("table.properties td { font:normal; text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#fffffff; }");
+          doc.write("h3 { margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica }");
+          doc.write("</style>");
+          doc.write("</head><body>");
+          doc.write("<h3>Properties of " + name + "</h3>");
+          doc.write("<div align=\"right\"><a href=\"javascript:window.close();\">Close</a></div>");
+          doc.write("<table class='properties'>");
+          doc.write("<tr><th>Name</th><th>Value</th></tr>");
+          for (prop in TestCases[name]) {
+            doc.write("<tr><th>" + prop + "</th><td>" + TestCases[name][prop] + "</td></tr>");
+          }
+          doc.write("</table>");
+          doc.write("</body></html>");
+          doc.close();
+          win.focus();
+        }
+      
+      </script>
+</head>
+<body>
+<h1>Unit Test Results.</h1>
+<table width="100%">
+<tr>
+<td align="left"></td><td align="right">Designed for use with <a href="http://www.junit.org/">JUnit</a> and <a href="http://ant.apache.org/">Ant</a>.</td>
+</tr>
+</table>
+<hr size="1">
+<h3>Class ar.com.torneobarker.users.UserControllerSpec</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th><th nowrap>Time Stamp</th><th>Host</th>
+</tr>
+<tr valign="top" class="Error">
+<td><a title="Display all tests" href="11_UserControllerSpec.html">UserControllerSpec</a></td><td><a title="Display all tests" href="11_UserControllerSpec.html">7</a></td><td><a title="Display only errors" href="11_UserControllerSpec-errors.html">1</a></td><td><a title="Display only failures" href="11_UserControllerSpec-fails.html">2</a></td><td>0.745</td><td>2016-03-07T19:14:49</td><td>BA27802ARL</td>
+</tr>
+</table>
+<h2>Tests</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a name="Test the index action returns the correct model"></a>Test the index action returns the correct model</td><td>Success</td><td></td><td>0.343</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a name="Test the create action returns the correct model"></a>Test the create action returns the correct model</td><td>Success</td><td></td><td>0.078</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a name="Test the save action correctly persists an instance"></a>Test the save action correctly persists an instance</td><td>Failure</td><td>Condition not satisfied:
+
+response.redirectedUrl == '/user/show/1'
+|        |             |
+|        /user/index   false
+|                      6 differences (50% similarity)
+|                      /user/(index-)
+|                      /user/(show/1)
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@2afb17bf
+<br>
+<br>
+<code>junit.framework.AssertionFailedError: Condition not satisfied:<br>
+<br>response.redirectedUrl == '/user/show/1'<br>|        |             |<br>|        /user/index   false<br>|                      6 differences (50% similarity)<br>|                      /user/(index-)<br>|                      /user/(show/1)<br>org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@2afb17bf<br>
+<br>	at ar.com.torneobarker.users.UserControllerSpec.Test the save action correctly persists an instance(UserControllerSpec.groovy:57)<br>
+</code></td><td>0.091</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a name="Test that the show action returns the correct model"></a>Test that the show action returns the correct model</td><td>Success</td><td></td><td>0.039</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a name="Test that the edit action returns the correct model"></a>Test that the edit action returns the correct model</td><td>Success</td><td></td><td>0.032</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a name="Test the update action performs an update on a valid domain instance"></a>Test the update action performs an update on a valid domain instance</td><td>Error</td><td>Cannot get property 'id' on null object<br>
+<br>
+<code>java.lang.NullPointerException: Cannot get property 'id' on null object<br>	at ar.com.torneobarker.users.UserControllerSpec.Test the update action performs an update on a valid domain instance(UserControllerSpec.groovy:122)<br>
+</code></td><td>0.076</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a name="Test that the delete action deletes an instance if it exists"></a>Test that the delete action deletes an instance if it exists</td><td>Failure</td><td>Condition not satisfied:
+
+User.count() == 1
+     |       |
+     0       false
+<br>
+<br>
+<code>junit.framework.AssertionFailedError: Condition not satisfied:<br>
+<br>User.count() == 1<br>     |       |<br>     0       false<br>
+<br>	at ar.com.torneobarker.users.UserControllerSpec.Test that the delete action deletes an instance if it exists(UserControllerSpec.groovy:142)<br>
+</code></td><td>0.044</td>
+</tr>
+</table>
+<div class="Properties">
+<a href="javascript:displayProperties('ar.com.torneobarker.users.UserControllerSpec');">
+                    Properties &raquo;
+                </a>
+</div>
+<div class="Properties">
+<a href="./11_UserControllerSpec-out.html">
+                        System.out &raquo;
+                    </a>
+</div>
+<div class="Properties">
+<a href="./11_UserControllerSpec-err.html">
+                        System.err &raquo;
+                    </a>
+</div>
+</body>
+</html>

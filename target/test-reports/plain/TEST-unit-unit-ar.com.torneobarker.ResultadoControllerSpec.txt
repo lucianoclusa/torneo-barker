@@ -1,0 +1,70 @@
+Testsuite: ar.com.torneobarker.ResultadoControllerSpec
+Tests run: 7, Failures: 1, Errors: 4, Time elapsed: 0,896 sec
+------------- Standard Output ---------------
+--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from Test the index action returns the correct model--
+--Output from Test the create action returns the correct model--
+--Output from Test the save action correctly persists an instance--
+--Output from Test that the show action returns the correct model--
+--Output from Test that the edit action returns the correct model--
+--Output from Test the update action performs an update on a valid domain instance--
+--Output from Test that the delete action deletes an instance if it exists--
+------------- ---------------- ---------------
+
+Testcase: Test the index action returns the correct model took 0,495 sec
+Testcase: Test the create action returns the correct model took 0,045 sec
+Testcase: Test the save action correctly persists an instance took 0,059 sec
+	Caused an ERROR
+null
+java.lang.NumberFormatException: null
+	at java.lang.Long.parseLong(Long.java:404)
+	at java.lang.Long.valueOf(Long.java:540)
+	at ar.com.torneobarker.ResultadoController.$tt__save(ResultadoController.groovy:165)
+	at ar.com.torneobarker.ResultadoControllerSpec.Test the save action correctly persists an instance(ResultadoControllerSpec.groovy:43)
+
+Testcase: Test that the show action returns the correct model took 0,039 sec
+	Caused an ERROR
+null
+java.lang.NumberFormatException: null
+	at java.lang.Long.parseLong(Long.java:404)
+	at java.lang.Long.valueOf(Long.java:540)
+	at ar.com.torneobarker.ResultadoController.$tt__show(ResultadoController.groovy:23)
+	at ar.com.torneobarker.ResultadoControllerSpec.Test that the show action returns the correct model(ResultadoControllerSpec.groovy:64)
+
+Testcase: Test that the edit action returns the correct model took 0,044 sec
+	Caused an ERROR
+Cannot invoke method getPartido() on null object
+java.lang.NullPointerException: Cannot invoke method getPartido() on null object
+	at ar.com.torneobarker.ResultadoController.$tt__edit(ResultadoController.groovy:295)
+	at ar.com.torneobarker.ResultadoControllerSpec.Test that the edit action returns the correct model(ResultadoControllerSpec.groovy:80)
+
+Testcase: Test the update action performs an update on a valid domain instance took 0,115 sec
+	Caused an ERROR
+Cannot get property 'id' on null object
+java.lang.NullPointerException: Cannot get property 'id' on null object
+	at ar.com.torneobarker.ResultadoControllerSpec.Test the update action performs an update on a valid domain instance(ResultadoControllerSpec.groovy:122)
+
+Testcase: Test that the delete action deletes an instance if it exists took 0,048 sec
+	FAILED
+Condition not satisfied:
+
+Resultado.count() == 1
+          |       |
+          0       false
+
+junit.framework.AssertionFailedError: Condition not satisfied:
+
+Resultado.count() == 1
+          |       |
+          0       false
+
+	at ar.com.torneobarker.ResultadoControllerSpec.Test that the delete action deletes an instance if it exists(ResultadoControllerSpec.groovy:142)
+
