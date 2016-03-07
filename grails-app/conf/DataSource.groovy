@@ -33,18 +33,17 @@ environments {
 
 	production {
 		dataSource {
+//		  url = System.getProperty("JDBC_CONNECTION_STRING")
 //		  pooled = true
-//		  dbCreate = "update"
-//		  driverClassName = "com.mysql.jdbc.Driver"
-		  //url='jdbc:mysql://aa1m3pxatdvhml6.ckepo45jtggq.sa-east-1.rds.amazonaws.com:3306/ebdb?user=produccion&password=12123lucho'
-		  url = System.getProperty("JDBC_CONNECTION_STRING")
-//		  dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-		  pooled = true
-		  driverClassName = "org.postgresql.Driver"
-		  dialect = "org.hibernate.dialect.PostgreSQLDialect"
-		  username = "zgshqvfpgeaagq"
-		  password = "29ligzXLCy2svKJI2XzCBMDwtQ"
-		  
+//		  driverClassName = "org.postgresql.Driver"
+//		  dialect = "org.hibernate.dialect.PostgreSQLDialect"
+//		  username = "zgshqvfpgeaagq"
+//		  password = "29ligzXLCy2svKJI2XzCBMDwtQ"
+			pooled = true
+			jmxExport = true
+			driverClassName = "org.h2.Driver"
+			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 		  properties {
 			validationQuery = "SELECT 1"
 			testOnBorrow = true
