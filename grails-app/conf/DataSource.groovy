@@ -33,26 +33,16 @@ environments {
 
 	production {
 		dataSource {
-//		  url = System.getProperty("JDBC_CONNECTION_STRING")
-//		  pooled = true
-//		  driverClassName = "org.postgresql.Driver"
-//		  dialect = "org.hibernate.dialect.PostgreSQLDialect"
-//		  username = "zgshqvfpgeaagq"
-//		  password = "29ligzXLCy2svKJI2XzCBMDwtQ"
-			pooled = true
-			jmxExport = true
-			driverClassName = "org.h2.Driver"
-			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
-		  properties {
-			validationQuery = "SELECT 1"
-			testOnBorrow = true
-			testOnReturn = true
-			testWhileIdle = true
-			timeBetweenEvictionRunsMillis = 1000 * 60 * 30
-			numTestsPerEvictionRun = 3
-			minEvictableIdleTimeMillis = 1000 * 60 * 30
-		  }
+			dbCreate = "update"
+			driverClassName = "org.postgresql.Driver"
+			dialect = org.hibernate.dialect.PostgreSQLDialect
+
+			uri = new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/test")
+
+			url = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path
+			username = uri.userInfo.split(":")[0]
+			password = uri.userInfo.split(":")[1]
 		}
-	  }
+	}
 }
+
