@@ -36,12 +36,11 @@ environments {
 			dbCreate = "update"
 			driverClassName = "org.postgresql.Driver"
 			dialect = org.hibernate.dialect.PostgreSQLDialect
-
-			uri = new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/test")
-
-			url = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path
-			username = uri.userInfo.split(":")[0]
-			password = uri.userInfo.split(":")[1]
+			
+            url = "jdbc:postgresql://127.7.158.2:5432/torneobarker"
+			username = "adminnx8mflq"
+			password = "y5Ei5DwLvbyy"
+   
 		}
 	}
 }
