@@ -36,11 +36,19 @@ environments {
 			dbCreate = "update"
 			driverClassName = "org.postgresql.Driver"
 			dialect = org.hibernate.dialect.PostgreSQLDialect
-			
-            url = "jdbc:postgresql://127.7.158.2:5432/torneobarker"
+
+			url = "jdbc:postgresql://127.7.158.2:5432/torneobarker"
 			username = "adminnx8mflq"
 			password = "y5Ei5DwLvbyy"
-   
+
+			/*
+			 *        
+			 Root User: adminEe94UY5
+			 Root Password: jz7dGWG8RdxK
+			 Database Name: torneobarker
+			 Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+			 */
+			
 		}
 	}
 }
