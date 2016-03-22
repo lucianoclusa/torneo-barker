@@ -34,12 +34,12 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			driverClassName = "org.postgresql.Driver"
-			dialect = org.hibernate.dialect.PostgreSQLDialect
-
-			url = "jdbc:postgresql://127.7.158.2:5432/torneobarker"
-			username = "adminnx8mflq"
-			password = "y5Ei5DwLvbyy"
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+			url = "jdbc:mysql://"+ $OPENSHIFT_MYSQL_DB_HOST+":" + $OPENSHIFT_MYSQL_DB_PORT + "/torneobarker?useUnicode=yes&characterEncoding=UTF-8"
+			username = "adminEe94UY5"
+			password = "jz7dGWG8RdxK"
 
 			/*
 			 *        
@@ -48,7 +48,7 @@ environments {
 			 Database Name: torneobarker
 			 Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
 			 */
-			
+
 		}
 	}
 }
