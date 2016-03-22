@@ -12,6 +12,8 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
+	boolean isPasswordEncoded = false
+	
 	static transients = ['springSecurityService']
 
 	static constraints = {
@@ -26,13 +28,15 @@ class User {
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role }
 	}
-/*
+
 	def beforeInsert() {
+        isPasswordEncoded = true
 		encodePassword()
 	}
 
 	def beforeUpdate() {
 		if (isDirty('password')) {
+			isPasswordEncoded = false
 			encodePassword()
 		}
 	}
@@ -40,5 +44,4 @@ class User {
 	protected void encodePassword() {
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}
-	*/
 }
