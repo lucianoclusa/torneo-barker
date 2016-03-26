@@ -52,7 +52,7 @@
 		<g:message code="fecha.torneo.label" default="Torneo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="torneo" name="torneo.id" from="${ar.com.torneobarker.Torneo.list()}" optionKey="id" required="" value="${fechaInstance?.torneo?.id}" class="many-to-one"/>
+	<g:select id="torneo" name="torneo.id" from="${ar.com.torneobarker.Torneo.list()}" optionKey="nombre" required="" value="${fechaInstance?.torneo?.id}" class="many-to-one"/>
 
 </div>
 

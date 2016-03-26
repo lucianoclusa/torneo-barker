@@ -91,7 +91,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "https://torneo-barker.herokuapp.com/"
+        grails.serverURL = "https://torneobarker-barkeropenshift.rhcloud.com"
     }
 }
 

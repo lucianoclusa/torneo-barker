@@ -5,7 +5,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'torneo.label', default: 'Torneo')}" />
-		<title>${torneoInstance.temporada.descripcion} ${torneoInstance.anio} ${torneoInstance.categoria.descripcion}</title>
+		<title>${torneoInstance.nombre}</title>
 	</head>
 	<body>
 		<a href="#show-torneo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 		<div id="show-torneo" class="content scaffold-show" role="main">
-			<h1>${torneoInstance.temporada.descripcion} ${torneoInstance.anio} ${torneoInstance.categoria.descripcion}</h1>
+			<h1>${torneoInstance.nombre}</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

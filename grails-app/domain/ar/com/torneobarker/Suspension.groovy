@@ -19,7 +19,7 @@ class Suspension {
 	def Integer cantPartidosRestantes
 	def boolean esIndefinido
 	def String descripcion
-	def boolean estaActiva = true
+	def SuspensionEstado estado
 	def boolean esProvisoria
 	
 	static mapping = {

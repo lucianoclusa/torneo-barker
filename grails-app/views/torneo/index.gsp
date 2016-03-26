@@ -26,6 +26,8 @@
 					
 						<th class="no-print"></th>
 
+						<g:sortableColumn property="nombre" title="${message(code: 'torneo.nombre.label', default: 'Nombre')}" />
+
 						<g:sortableColumn property="anio" title="${message(code: 'torneo.anio.label', default: 'Año')}" />
 						
 						<g:sortableColumn property="temporada" title="${message(code: 'torneo.temporada.label', default: 'Temporada')}" />
@@ -43,6 +45,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td class="no-print"><g:link action="show" id="${torneoInstance.id}"><img title="Ver" alt="Ver" width="20px" height="20px" src="${createLinkTo(dir: 'images', file: 'lupa.png')}"/></g:link></td>
+						
+						<td>${fieldValue(bean: torneoInstance, field: "nombre")}</td>
 						
 						<td>${fieldValue(bean: torneoInstance, field: "anio")}</td>
 						

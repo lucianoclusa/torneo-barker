@@ -16,7 +16,7 @@
 			</ul>
 		</div>
 		<div id="edit-torneo" class="content scaffold-edit" role="main">
-			<h1>${torneoInstance.temporada.descripcion} ${torneoInstance.anio} ${torneoInstance.categoria.descripcion}</h1>
+			<h1>${torneoInstance.nombre}</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

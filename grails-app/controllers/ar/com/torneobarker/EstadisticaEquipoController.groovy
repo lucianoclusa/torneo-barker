@@ -158,11 +158,11 @@ class EstadisticaEquipoController {
 	def descargarPlanillaFecha(){
 		Fecha fecha = Fecha.get(params.get("fechaId"))
 
-		List<Suspension> suspensionesTorneo = Suspension.findAll("from Suspension s where s.torneo.anio = :anio and s.torneo.temporada.id = :temporada and s.estaActiva = true", [anio : fecha.torneo.anio, temporada : fecha.torneo.temporada.id])
+		List<Suspension> suspensionesTorneo = Suspension.findAll("from Suspension s where s.torneo.anio = :anio and s.torneo.temporada.id = :temporada and s.estado.id = 1", [anio : fecha.torneo.anio, temporada : fecha.torneo.temporada.id])
 
-		List<Suspension> suspensionesPermanentes = Suspension.findAll("from Suspension s where s.esIndefinido = true and s.estaActiva = true");
+		List<Suspension> suspensionesPermanentes = Suspension.findAll("from Suspension s where s.esIndefinido = true and s.estado.id = 1");
 		
-		List<Suspension> suspensionesProvisorias = Suspension.findAll("from Suspension s where s.esProvisoria = true and s.estaActiva = true and s.torneo.anio = :anio and s.torneo.temporada.id = :temporada and s.estaActiva = true", [anio : fecha.torneo.anio, temporada : fecha.torneo.temporada.id]);
+		List<Suspension> suspensionesProvisorias = Suspension.findAll("from Suspension s where s.esProvisoria = true and s.torneo.anio = :anio and s.torneo.temporada.id = :temporada and s.estado.id = 1", [anio : fecha.torneo.anio, temporada : fecha.torneo.temporada.id]);
 
 				int medioHeight = 15*20;
 		int dobleHeight = 20*20;
@@ -344,7 +344,7 @@ class EstadisticaEquipoController {
 					if (Environment.current == Environment.DEVELOPMENT) {
 						imgFile = grailsAttributes.getApplicationContext().getResource("logo.png").getFile()
 					} else if (Environment.current == Environment.PRODUCTION) {
-						def url = 'http://torneobarker-desa.elasticbeanstalk.com/assets/logo.png'
+						def url = 'https://torneobarker-barkeropenshift.rhcloud.com/assets/logo.png'
 						def file = new File('logo.png').newOutputStream()
 						file << new URL(url).openStream()
 						file.close()
@@ -556,7 +556,7 @@ class EstadisticaEquipoController {
 		if (Environment.current == Environment.DEVELOPMENT) {
 			imgFile = grailsAttributes.getApplicationContext().getResource("logo.png").getFile()
 		} else if (Environment.current == Environment.PRODUCTION) {
-			def url = 'http://torneo-barkeropenshift.rhcloud.com/assets/logo.png'
+			def url = 'https://torneobarker-barkeropenshift.rhcloud.com/assets/logo.png'
 					def file = new File('logo.png').newOutputStream()
 					file << new URL(url).openStream()
 					file.close()
@@ -627,7 +627,7 @@ class EstadisticaEquipoController {
 		if (Environment.current == Environment.DEVELOPMENT) {
 			imgFile = grailsAttributes.getApplicationContext().getResource("logo.png").getFile()
 		} else if (Environment.current == Environment.PRODUCTION) {
-			def url = 'http://desatorneo-barkeropenshift.rhcloud.com/assets/logo.png'
+			def url = 'https://torneobarker-barkeropenshift.rhcloud.com/assets/logo.png'
 					def file = new File('logo.png').newOutputStream()
 					file << new URL(url).openStream()
 					file.close()

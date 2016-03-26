@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: fechaInstance, field: "numeroFecha")}</td>
 					
-						<td>${fieldValue(bean: fechaInstance, field: "torneo")}</td>
+						<td>${fieldValue(bean: fechaInstance, field: "torneo.nombre")}</td>
 					
 					</tr>
 				</g:each>

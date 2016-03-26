@@ -7,7 +7,7 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-grails.project.war.exploded.dir = "D:/Grails/workspace/TorneoBarkerOpenShift/torneobarker"
+grails.project.war.exploded.dir = "C:/Users/Lucho/Grails Workspace/TorneoBarkerOpenShift/torneobarker/webapps/ROOT"
 grails.war.exploded=true
 
 grails.project.fork = [

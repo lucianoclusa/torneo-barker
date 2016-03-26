@@ -110,12 +110,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: suspensionInstance, field: 'estaActiva', 'error')} ">
-	<label for="estaActiva">
-		<g:message code="suspension.estaActiva.label" default="Esta Activa" />
-		
+<div class="fieldcontain ${hasErrors(bean: suspensionInstance, field: 'estado', 'error')} ">
+	<label for="estado">
+		<g:message code="suspension.estado.label" default="Estado" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:checkBox name="estaActiva" value="${suspensionInstance?.estaActiva}" />
+	<span id="fechasContainer">
+		<g:select id="estado" required="" name="estado.id" from="${ ar.com.torneobarker.SuspensionEstado.findAll()}" optionKey="id" value="${suspensionInstance?.estado}" class="many-to-one" />
+	</span>
 
 </div>
 

@@ -1,4 +1,13 @@
 <%@ page import="ar.com.torneobarker.Torneo" %>
+
+<div class="fieldcontain ${hasErrors(bean: torneoInstance, field: 'nombre', 'error')} ">
+	<label for="nombre">
+		<g:message code="torneo.nombre.label" default="Nombre" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="nombre" required="" value="${torneoInstance?.nombre}"/>
+
+</div>
 <div class="fieldcontain ${hasErrors(bean: torneoInstance, field: 'anio', 'error')} required">
 	<label for="anio">
 		<g:message code="torneo.anio.label" default="Año" />

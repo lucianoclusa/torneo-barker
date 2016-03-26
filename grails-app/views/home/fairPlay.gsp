@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Fair Play - ${torneoInstance}</title>
+		<title>Fair Play - ${torneoInstance.nombre}</title>
 	</head>
 	<body>
 		<div class="nav" role="navigation">

@@ -20,7 +20,7 @@ class EstadisticaFairPlayController {
 	}
 
 	public static List<EstadisticaFairPlay> getFairPlayList(Torneo torneo) {
-		List<Suspension> suspensiones = Suspension.findAll("from Suspension s where s.torneo.id = :torneo or s.esIndefinido = 'true'", [torneo : torneo.id])
+		List<Suspension> suspensiones = Suspension.findAll("from Suspension s where s.torneo.id = :torneo or s.esIndefinido = 'true' and s.estado.id = 1", [torneo : torneo.id])
 
 		List<EstadisticaFairPlay> fairPlayList;
 		def HashMap<String,EstadisticaFairPlay> tablaFairPlay =  new HashMap();

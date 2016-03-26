@@ -65,7 +65,7 @@
 				<li class="fieldcontain">
 					<span id="torneo-label" class="property-label"><g:message code="fecha.torneo.label" default="Torneo" /></span>
 					
-						<span class="property-value" aria-labelledby="torneo-label"><g:link controller="torneo" action="show" id="${fechaInstance?.torneo?.id}">${fechaInstance?.torneo?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="torneo-label"><g:link controller="torneo" action="show" id="${fechaInstance?.torneo?.id}">${fechaInstance?.torneo?.nombre?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

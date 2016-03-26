@@ -101,19 +101,11 @@
 				<li class="fieldcontain">
 					<span id="torneo-label" class="property-label"><g:message code="suspension.torneo.label" default="Torneo" /></span>
 					
-						<span class="property-value" aria-labelledby="torneo-label"><g:link controller="torneo" action="show" id="${suspensionInstance?.torneo?.id}">${suspensionInstance?.torneo?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="torneo-label"><g:link controller="torneo" action="show" id="${suspensionInstance?.torneo?.id}">${suspensionInstance?.torneo?.nombre?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
-				
-				<g:if test="${suspensionInstance?.estaActiva}">
-				<li class="fieldcontain">
-					<span id="estaActiva-label" class="property-label"><g:message code="suspension.estaActiva.label" default="Esta Activa" /></span>
 
-						<span class="property-value" aria-labelledby="estaActiva-label"><g:formatBoolean boolean="${suspensionInstance?.estaActiva}" /></span>
-
-				</li>
-				</g:if>
 				
 				<g:if test="${suspensionInstance?.esProvisoria}">
 				<li class="fieldcontain">
@@ -122,9 +114,18 @@
 						<span class="property-value" aria-labelledby="esProvisoria-label"><g:formatBoolean boolean="${suspensionInstance?.esProvisoria}" /></span>
 
 				</li>
-				</g:if>			
+				</g:if>	
+				<g:if test="${suspensionInstance?.estado}">
+				<li class="fieldcontain">
+					<span id="estado-label" class="property-label"><g:message code="suspension.estado.label" default="Estado" /></span>
+
+						<span class="property-value" aria-labelledby="estado-label">${suspensionInstance?.estado}</span>
+
+				</li>
+				</g:if>
 			</ol>
-			<g:form url="[resource:suspensionInstance, action:'delete']" method="DELETE">
+
+				<g:form url="[resource:suspensionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${suspensionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

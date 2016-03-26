@@ -2,6 +2,8 @@ package ar.com.torneobarker
 
 class Torneo {
 
+	def String nombre
+	
 	static hasMany = [fechas: Fecha, equipos: Equipo]
 	def Categoria categoria
 	def Temporada temporada
@@ -17,6 +19,7 @@ class Torneo {
 	
     static constraints = {
     	ultFechaCargada nullable: true
+		nombre unique:true
 	}
 	
 	public String toString(){

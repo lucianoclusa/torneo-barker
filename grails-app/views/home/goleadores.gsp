@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Goleadores - ${torneoInstance}</title>
+		<title>Goleadores - ${torneoInstance.nombre}</title>
 	</head>
 	<body>
 		<div class="nav" role="navigation">

@@ -25,7 +25,7 @@ class ResultadoController {
 		Torneo torneoInstance = partido.getFecha().getTorneo()
 		Resultado resultado = partido.getResultado();
 
-		List<Suspension> suspensionesList = Suspension.findAll("from Suspension s where s.partido.id = :torneo", [torneo : partido.id])
+		List<Suspension> suspensionesList = Suspension.findAll("from Suspension s where s.partido.id = :torneo and s.estado.id = 1", [torneo : partido.id])
 		Set<Suspension> suspensiones = new HashSet<Suspension>(suspensionesList);
 
 		Set<EstadisticaJugador> jugadoresLocal = populateJugadoresEstadistica(partido, partido.getLocal(), resultado, resultado.golesLocal, suspensiones, false)
@@ -228,10 +228,10 @@ class ResultadoController {
 					Jugador jugador = Jugador.get(jugadorId);
 					int cantFechasSuspension = new Integer(params.get(key));
 					if(partido.local.jugadores.contains(Jugador.get(jugadorId))){
-						Suspension suspension = new Suspension(fechaSancion: new Date(), cantPartidosRestantes:cantFechasSuspension, cantFechas:cantFechasSuspension ,jugador:jugador, torneo:fecha.torneo, fecha: partido.fecha, partido:partido, descripcion:params.get("descripcion_" + jugadorId), esIndefinido:false, estaActiva:true, equipo: partido.local);
+						Suspension suspension = new Suspension(estado: SuspensionEstado.get(1), fechaSancion: new Date(), cantPartidosRestantes:cantFechasSuspension, cantFechas:cantFechasSuspension ,jugador:jugador, torneo:fecha.torneo, fecha: partido.fecha, partido:partido, descripcion:params.get("descripcion_" + jugadorId), esIndefinido:false, equipo: partido.local);
 						resultadoInstance.addToSuspensiones(suspension)
 					}else{
-						Suspension suspension = new Suspension(fechaSancion: new Date(),cantPartidosRestantes:cantFechasSuspension, cantFechas:cantFechasSuspension ,jugador:jugador, torneo:fecha.torneo, fecha: partido.fecha, partido:partido, descripcion:params.get("descripcion_" + jugadorId), esIndefinido:false, estaActiva:true, equipo: partido.visitante);
+						Suspension suspension = new Suspension(estado: SuspensionEstado.get(1), fechaSancion: new Date(),cantPartidosRestantes:cantFechasSuspension, cantFechas:cantFechasSuspension ,jugador:jugador, torneo:fecha.torneo, fecha: partido.fecha, partido:partido, descripcion:params.get("descripcion_" + jugadorId), esIndefinido:false, equipo: partido.visitante);
 						resultadoInstance.addToSuspensiones(suspension)
 					}
 
@@ -256,8 +256,8 @@ class ResultadoController {
 
 	def restarPartidosRestantes(Partido partido){
 
-		List<Suspension> suspensionesLocal = Suspension.findAll("from Suspension s where s.equipo = :equipo and s.estaActiva = true and s.esIndefinido = false", [equipo : partido.local])
-		List<Suspension> suspensionesVisitante = Suspension.findAll("from Suspension s where s.equipo = :equipo and s.estaActiva = true and s.esIndefinido = false", [equipo : partido.visitante])
+		List<Suspension> suspensionesLocal = Suspension.findAll("from Suspension s where s.equipo = :equipo and s.estado.id = 1 and s.esIndefinido = false", [equipo : partido.local])
+		List<Suspension> suspensionesVisitante = Suspension.findAll("from Suspension s where s.equipo = :equipo and s.estado.id = 1 and s.esIndefinido = false", [equipo : partido.visitante])
 
 		if(suspensionesLocal!=null){
 			for(Suspension suspension : suspensionesLocal){
@@ -268,7 +268,7 @@ class ResultadoController {
 							suspension.partidosRestados.add(partido)
 						}
 						if(suspension.cantPartidosRestantes == 0)
-							suspension.estaActiva=false
+							suspension.estado=SuspensionEstado.get(2)
 						suspension.save flush:true
 					}
 				}
@@ -283,7 +283,7 @@ class ResultadoController {
 							suspension.partidosRestados.add(partido)
 						}
 						if(suspension.cantPartidosRestantes == 0)
-							suspension.estaActiva=false
+							suspension.estado=SuspensionEstado.get(2)
 						suspension.save flush:true
 					}
 				}

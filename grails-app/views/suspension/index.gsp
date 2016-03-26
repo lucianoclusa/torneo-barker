@@ -47,7 +47,7 @@
 					
 						<g:sortableColumn property="torneo" title="${message(code: 'suspension.torneo.label', default: 'Torneo')}" />
 	
-						<g:sortableColumn property="fecha" title="${message(code: 'suspension.fecha.label', default: 'Fecha N°')}" />
+						<g:sortableColumn property="estado" title="${message(code: 'suspension.estado.label', default: 'Estado')}" />
 					
 					</tr>
 				</thead>
@@ -59,7 +59,9 @@
 						
 						<td><g:formatDate format="dd/MM/yyyy" date="${suspensionInstance.fechaSancion}" /></td>
 					
-						<td>${fieldValue(bean: suspensionInstance, field: "cantFechas")}</td>
+						<td><g:if test="${suspensionInstance.esIndefinido}">Permanente</g:if>
+						<g:elseif test="${suspensionInstance.esProvisoria}">Provisoria</g:elseif>
+						<g:else>${fieldValue(bean: suspensionInstance, field: "cantFechas")}</g:else></td>
 
 						<td>${fieldValue(bean: suspensionInstance, field: "descripcion")}</td>
 
@@ -67,9 +69,9 @@
 					
 						<td>${fieldValue(bean: suspensionInstance, field: "equipo.colegio")}</td>
 
-						<td>${fieldValue(bean: suspensionInstance, field: "torneo")}</td>
+						<td>${fieldValue(bean: suspensionInstance, field: "torneo.nombre")}</td>
 
-						<td>${fieldValue(bean: suspensionInstance, field: "fecha")}</td>
+						<td>${fieldValue(bean: suspensionInstance, field: "estado")} </td>
 					
 					</tr>
 				</g:each>

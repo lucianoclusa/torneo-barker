@@ -34,17 +34,15 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			pooled = true
-			driverClassName = "com.mysql.jdbc.Driver"
-			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			url = "jdbc:mysql://"+ $OPENSHIFT_MYSQL_DB_HOST+":" + $OPENSHIFT_MYSQL_DB_PORT + "/torneobarker?useUnicode=yes&characterEncoding=UTF-8"
-			username = "adminEe94UY5"
-			password = "jz7dGWG8RdxK"
+
+			url = "jdbc:mysql://" + $OPENSHIFT_MYSQL_DB_HOST + ":" + $OPENSHIFT_MYSQL_DB_PORT + "/torneobarker?autoReconnect=true"
+			username = $OPENSHIFT_MYSQL_DB_USERNAME
+			password = 	$OPENSHIFT_MYSQL_DB_PASSWORD
 
 			/*
 			 *        
-			 Root User: adminEe94UY5
-			 Root Password: jz7dGWG8RdxK
+			 Root User: adminRfTrpFk
+			 Root Password: wFibtfcR5wYR
 			 Database Name: torneobarker
 			 Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
 			 */
