@@ -72,6 +72,15 @@
 	margin-bottom: 15px;
 }
 
+.editing{
+	border-style: solid;
+    border-width: medium;
+    border-color: #009d00;
+}
+.editable{
+	display: none;
+}
+
 @media print
 {    
       body, html, #wrapper {

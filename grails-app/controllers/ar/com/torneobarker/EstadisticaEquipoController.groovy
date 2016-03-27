@@ -218,7 +218,7 @@ class EstadisticaEquipoController {
 
 					sheet.addCell(new Label(0,0,"LISTADO " + fecha.torneo.toString(),negrita))
 					sheet.addCell(new Label(0,7,"Colegio: " + equipo.colegio.toString(),negrita))
-					sheet.addCell(new Label(4,7,"TURNO:        CANCHA:       ",negrita))
+					sheet.addCell(new Label(4,7,"TURNO:  " + partido.getTurno().toString() + "    CANCHA:    " + partido.getCancha().toString() + "   ",negrita))
 
 
 					sheet.addCell(new Label(1,9,"Apellido y Nombre", cabecera))

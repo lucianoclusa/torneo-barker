@@ -63,7 +63,7 @@ class TorneoController {
 					partido.setGolesLocal(golesLocal);
 					partido.setGolesVisitante(golesVisitante);
 				}
-				
+
 				if(torneoFinalizado == true && partido.getResultado()==null){
 					torneoFinalizado = false;
 				}
@@ -77,22 +77,22 @@ class TorneoController {
 			if(primeros!=null && primeros.size()>1)
 				this.crearFechaDesempate(torneoInstance, primeros);
 		}
-		
+
 		respond torneoInstance
 	}
-	
+
 	private void crearFechaDesempate(Torneo torneo, List<EstadisticaEquipo> primeros){
 		Fecha fechaDesempate = new Fecha();
 		fechaDesempate.setDescripcion("Fecha desempate");
 		fechaDesempate.numeroFecha = torneo.fechas.size();
-		
+
 		List<Partido>partidos= new ArrayList<Partido>()
 		Partido partido = new Partido();
 		partido.local = primeros.get(0).equipo
 		partido.visitante = primeros.get(1).equipo
 		partido.fecha = fechaDesempate
 		partidos.add(partido)
-		
+
 		fechaDesempate.partidos = partidos
 		torneo.addToFechas(fechaDesempate)
 		torneo.save(flush:true)
@@ -103,7 +103,7 @@ class TorneoController {
 		List<EstadisticaEquipo> primeros = this.getPrimeros(posiciones);
 		return primeros;
 	}
-	
+
 	private List<EstadisticaEquipo> getPrimeros(List<EstadisticaEquipo> posiciones){
 		List<EstadisticaEquipo> primeros = new ArrayList<EstadisticaEquipo>();
 		primeros.add(posiciones.get(0));
@@ -115,9 +115,9 @@ class TorneoController {
 			}
 		}
 		return primeros;
-		
+
 	}
-	
+
 	def create() {
 		respond new Torneo(params)
 	}
@@ -239,7 +239,7 @@ class TorneoController {
 			fechas[i].numeroFecha = i+1;
 			fechas[i].descripcion = "Fecha " + (i+1);
 			fechas[i].torneo = torneoInstance
-
+			int nroPartido = 1;
 			for(int j=0; j<cantPartidosPorFecha; j++){
 				String equipoUnoId = local[k];
 				String equipoDosId = visita[k];
@@ -252,7 +252,10 @@ class TorneoController {
 					Equipo equipoVisitante = Equipo.get(equipoDosId);
 					partido.setVisitante(equipoVisitante);
 					partido.fecha = fechas[i]
-
+					partido.nro = nroPartido;
+					nroPartido++;
+					partido.turno = getTurnoForTorneo(torneoInstance)
+					partido.cancha = getCanchaForPartido(partido);
 					fechas[i].addToPartidos(partido);
 				}
 				k++
@@ -263,16 +266,49 @@ class TorneoController {
 
 	}
 
+	private Turno getTurnoForTorneo(Torneo torneo){
+		switch (torneo.getCategoria().id){
+			case 1:
+				return Turno.findByNroTurno(1);
+			case 2:
+				return Turno.findByNroTurno(2);
+			case 3:
+				return Turno.findByNroTurno(3);
+			default:
+				return Turno.findByNroTurno(1);
+
+		}
+	}
+
+	private Cancha getCanchaForPartido(Partido partido){
+		switch (partido.nro){
+			case 1:
+				return Cancha.findByNroCancha(1);
+			case 2:
+				return Cancha.findByNroCancha(2);
+			case 3:
+				return Cancha.findByNroCancha(3);
+			case 4:
+				return Cancha.findByNroCancha(4);
+			case 5:
+				return Cancha.findByNroCancha(5);
+			case 6:
+				return Cancha.findByNroCancha(6);
+			default:
+				return Cancha.findByNroCancha(1);
+		}
+	}
+
 	def edit(Torneo torneoInstance) {
 		Set<Fecha> fechas = torneoInstance.getFechas();
-		
+
 		respond torneoInstance , [fechas: fechas]
 	}
 
 	@Transactional
 	def update(Torneo torneoInstance) {
-		
-		
+
+
 		if (torneoInstance == null) {
 			notFound()
 			return
@@ -322,5 +358,63 @@ class TorneoController {
 			'*'{ render status: NOT_FOUND }
 		}
 	}
+	
+	@Transactional
+	def editFecha(){
+		boolean error = false;
+		Fecha fechaActual = Fecha.get(params.get("fechaActualId"));
+		int fechaSelected = Integer.parseInt(params.get("fechaSelected"));
+		if(fechaActual.numeroFecha!=fechaSelected){
+			error = !switchFechas(fechaActual, fechaSelected);
+		}
+		if(!error){
+			for(Partido partido : fechaActual.partidos){
+				boolean partidoModificado = false;
+				Long turnoSelectedId = Long.parseLong(params.get("turnoSelected" + partido.getId()));
+				
+				if(!partido.getTurno().getId().equals(turnoSelectedId)){
+					partido.setTurno(Turno.get(turnoSelectedId));
+					partidoModificado = true;
+				}
+				
+				Long canchaSelectedId = Long.parseLong(params.get("canchaSelected" + partido.getId()));
+				if(!partido.getCancha().getId().equals(canchaSelectedId)){
+					partido.setCancha(Cancha.get(canchaSelectedId));
+					partidoModificado = true;
+				}
+				
+				if(partidoModificado){
+					partido.save(flush:true);
+					error = partido.dirty;  
+				}
+			}
 
+			
+			if(!error)			
+				request.message = "Fecha modificada."
+			else
+				request.error = "Error modificando la fecha."
+		}else
+			request.error = "Error modificando la fecha."
+		
+		redirect(action:"show", id:fechaActual.getTorneo().getId())
+	}
+
+	private boolean switchFechas(Fecha fechaActual, int nroFechaActualizada){
+		boolean ok= false;
+		
+		Fecha fechaASwitchear = Fecha.findByTorneoAndNumeroFecha(fechaActual.getTorneo(), nroFechaActualizada);
+		fechaASwitchear.setNumeroFecha(fechaActual.getNumeroFecha());
+		fechaASwitchear.setDescripcion("Fecha "+fechaASwitchear.numeroFecha)
+		fechaActual.setNumeroFecha(nroFechaActualizada);
+		fechaActual.setDescripcion("Fecha "+fechaActual.numeroFecha)
+		
+		fechaASwitchear.save(flush:true)
+		fechaActual.save(flush:true)
+		
+		ok = !fechaActual.dirty && !fechaASwitchear.dirty
+		
+		return ok
+	}
+	
 }

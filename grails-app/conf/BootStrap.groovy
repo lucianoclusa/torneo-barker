@@ -54,13 +54,16 @@ class BootStrap {
 		if(Categoria.get(2)==null)new Categoria(id:2, descripcion:"Mas 40").save()
 		if(Categoria.get(3)==null)new Categoria(id:3, descripcion:"Mas 45").save()
 
-		if(Cancha.get(1)==null)new Cancha(id:1, descripcion:"Cancha 1").save()
-		if(Cancha.get(2)==null)new Cancha(id:2, descripcion:"Cancha 2").save()
-		if(Cancha.get(3)==null)new Cancha(id:3, descripcion:"Cancha 3").save()
-		if(Cancha.get(4)==null)new Cancha(id:4, descripcion:"Cancha 4").save()
-		if(Cancha.get(5)==null)new Cancha(id:5, descripcion:"Cancha 5").save()
-		if(Cancha.get(6)==null)new Cancha(id:6, descripcion:"Cancha 6").save()
-		
+		if(Cancha.get(1)==null)new Cancha(id:1, nroCancha:1, descripcion:"Cancha 1").save()
+		if(Cancha.get(2)==null)new Cancha(id:2, nroCancha:2, descripcion:"Cancha 2").save()
+		if(Cancha.get(3)==null)new Cancha(id:3, nroCancha:3, descripcion:"Cancha 3").save()
+		if(Cancha.get(4)==null)new Cancha(id:4, nroCancha:4, descripcion:"Cancha 4").save()
+		if(Cancha.get(5)==null)new Cancha(id:5, nroCancha:5, descripcion:"Cancha 5").save()
+		if(Cancha.get(6)==null)new Cancha(id:6, nroCancha:6, descripcion:"Cancha 6").save()
+
+		if(Turno.get(1)==null)new Turno(id:1, nroTurno:1, descripcion:"Turno 1 - 12:30").save()
+		if(Turno.get(2)==null)new Turno(id:2, nroTurno:2, descripcion:"Turno 2 - 14:00").save()
+		if(Turno.get(3)==null)new Turno(id:3, nroTurno:3, descripcion:"Turno 3 - 15:30").save()
 		
 		def adminRole
 		if(Role.get(1)==null)adminRole = new Role(id:1, authority: 'ROLE_ADMIN').save(flush: true)

@@ -11,6 +11,9 @@ class Partido {
 	def Integer golesLocal
 	def Resultado resultado
 	def Fecha fecha
+	def nro
+	def Turno turno
+	def Cancha cancha
 //	def boolean tieneRestriccionEquipoLocal
 //	def String descripcionRestriccionEquipoLocal
 //	def boolean tieneRestriccionEquipoVisitante
@@ -20,6 +23,8 @@ class Partido {
 
     static constraints = {
 		resultado unique: true, nullable: true
+		cancha nullable:true
+		turno nullable:true
 //		descripcionRestriccionEquipoLocal nullable:true
 //		descripcionRestriccionEquipoVisitante nullable:true
     }

@@ -1,11 +1,15 @@
 
 <%@ page import="ar.com.torneobarker.Torneo" %>
+<%@ page import="ar.com.torneobarker.Turno" %>
+<%@ page import="ar.com.torneobarker.Cancha" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'torneo.label', default: 'Torneo')}" />
 		<title>${torneoInstance.nombre}</title>
+		<asset:javascript src="torneo.js" />
 	</head>
 	<body>
 		<a href="#show-torneo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -67,19 +71,25 @@
 				<g:if test="${torneoInstance?.fechas}">
 				<li class="fieldcontain">					
 						<g:each in="${torneoInstance.fechas.sort { it.numeroFecha }}" var="fecha">
-						
-						
+								<g:form name="fechaForm${fecha.id }" action="editFecha">
+								<g:hiddenField name="fechaActualId" value="${fecha.id }"/>
+								<div class="fecha${fecha.id }">
 								<table>
 									<thead>
 										<tr>
-										
-											<th colspan="6"><g:message code="partido.local.label" default="${fecha?.descripcion?.encodeAsHTML()}" /></th>
-											<th colspan="1"><g:link class ="no-print" controller="estadisticaEquipo" action="descargarPlanillaFecha" params="[fechaId: fecha.id]" align="center"><img title="Descargar Planilla" alt="Descargar Planilla" width="20px" height="20px" src="${createLinkTo(dir: 'images', file: 'excel-xls-icon.png')}"/></g:link></th>
+											<th colspan="7" class="no-editable"><g:message code="partido.local.label" default="${fecha?.descripcion?.encodeAsHTML()}" /> </th>
+											<th colspan="7" class="editable">Fecha: <g:select name="fechaSelected" from="${1..torneoInstance.fechas.size() }" value="${fecha.numeroFecha }"/></th> 
+											<th colspan="1"><g:link class="no-print" controller="estadisticaEquipo" action="descargarPlanillaFecha" params="[fechaId: fecha.id]"><img title="Descargar Planilla" alt="Planilla" width="25px" height="25px" src="${createLinkTo(dir: 'images', file: 'excel-xls-icon.png')}"/></g:link></th>
+											<th colspan="1"><a id="editButton" class="no-print no-editable" href="javascript:habilitarEditarFecha('${fecha.id}')"><img title="Editar Fecha" alt="Editar" width="25px" height="25px" src="${createLinkTo(dir: 'images', file: 'edit-icon.png')}"/></a></th>
 										</tr>
 									</thead>
 									<tbody>
-									<g:each in="${fecha.partidos.sort { it.id }}" status="i" var="partido">
+									<g:each in="${fecha.partidos.sort { it.cancha.id }}" status="i" var="partido">
 										<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+											<td class="no-editable">${partido.turno==null?"-------":partido.turno}</td>
+											<td class="editable"><g:select name="turnoSelected${partido.getId() }" from="${Turno.findAll() }" optionKey="id" value="${partido.getTurno().getId() }"/></td>
+											<td class="no-editable">${partido.cancha==null?"--------":partido.cancha}</td>
+											<td class="editable"><g:select name="canchaSelected${partido.getId() }" from="${Cancha.findAll() }" optionKey="id" value="${partido.getCancha().getId() }" /></td>
 											<td style="text-align: center"><g:link  controller="equipo" action="show" id="${partido.local.id}">${fieldValue(bean: partido, field: "local.nombre")}</g:link></td>						
 											<td>${partido.golesLocal==null?"-":partido.golesLocal}</td>
 											<td>VS</td>
@@ -97,11 +107,19 @@
 									</g:each>
 									<g:if test="${fecha.equipoLibre==null?false:true}">
 									<tr align="center">
-										<td colspan="8" align="center"> Libre: ${fecha.equipoLibre?.nombre} </td>
+										<td colspan="9" align="center"> Libre: ${fecha.equipoLibre?.nombre} </td>
 									</tr>
 									</g:if>
+									<tr id="rowBotonera${fecha.id }" class="editable"><td colspan="9" align="right">
+										<fieldset class="buttons">
+											<a class="cancel" href="javascript:cancelEdition(${fecha.id})"><g:message code="default.button.cancel.label" default="Cancel" /></a>
+											<g:submitButton name="fechaForm${fecha.id }" class="accept" value="Guardar"/>
+										</fieldset>
+									  </td></tr>
 									</tbody>
 								</table>
+								</div>
+								</g:form>
 						</g:each>
 				</li>
 				</g:if>
