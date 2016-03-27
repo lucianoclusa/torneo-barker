@@ -35,9 +35,9 @@ environments {
 		dataSource {
 			dbCreate = "update"
 
-			url = "jdbc:mysql://" + $OPENSHIFT_MYSQL_DB_HOST + ":" + $OPENSHIFT_MYSQL_DB_PORT + "/torneobarker?autoReconnect=true"
-			username = $OPENSHIFT_MYSQL_DB_USERNAME
-			password = 	$OPENSHIFT_MYSQL_DB_PASSWORD
+			url = "jdbc:mysql://127.5.133.2:3306/torneobarker?autoReconnect=true"
+			username = "adminRfTrpFk"
+			password = 	"wFibtfcR5wYR"
 
 			/*
 			 *        
